@@ -153,6 +153,35 @@ public class HeroesTable {
                             "\n" +
                             "The character was ranked 4th on IGN's list of the Top 100 Comic Book Villains of All Time[6] and as the 8th Greatest Villain by Wizard on its 100 Greatest Villains of All Time list.[7] Luthor is one of a few genre-crossing villains whose adventures take place \"in a world in which the ordinary laws of nature are slightly suspended\".[4] Scott James Wells, Sherman Howard, John Shea, and Michael Rosenbaum portrayed the character in Superman-themed television series, while Lyle Talbot, Gene Hackman, Kevin Spacey, and Jesse Eisenberg have portrayed the character in major motion pictures. Clancy Brown, Powers Boothe, James Marsters, Chris Noth, Anthony LaPaglia, Steven Blum, Fred Tatasciore, Jason Isaacs, Kevin Michael Richardson, Mark Rolston, John DiMaggio, James Woods, and others have provided the character's voice in animation adaptations.",
                     "https://pre00.deviantart.net/348b/th/pre/f/2015/048/d/9/how_to_draw_dc_villains___lex_luthor_by_timlevins-d8iflfl.jpg",
+                    CharacterType.VILLAIN),
+            new Character("Reverse-Flash",
+                    "Eobard Thawne",
+                    "Reverse-Flash is a name which has been used by several fictional supervillains in American comic books published by DC Comics. Each iteration is an enemy of the hero known as The Flash. As each version of the Flash has the power to travel at super-speeds, each version of Reverse-Flash can also travel at super-speeds, allowing them to travel back and forth in time. The fact that the each two have the same power is much of the reason they are enemies. There have been many different characters that have been known as Reverse-Flash",
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5DN1HKfbdfkq4tcK1SHt2HQSTEAfIcWHEd42o6Dqgn7KZYhEg",
+                    CharacterType.VILLAIN),
+            new Character("Deathstroke",
+                    "Slade Joseph Wilson",
+                    "Deathstroke (Slade Joseph Wilson) is a fictional supervillain appearing in American comic books published by DC Comics. The character was created by Marv Wolfman and George Pérez. He is a mercenary and assassin who first appeared in The New Teen Titans #2 (December 1980).[1] Wizard magazine rated him the 24th Greatest Villain of All Time.[2]\n" +
+                            "\n" +
+                            "Though he is the archenemy of the Teen Titans, writers have developed him over the years as an adversary of other heroes in the DC Universe as well, including Batman and Green Arrow. The character has been substantially adapted from the comics into multiple forms of media, including several Batman-related projects and the Teen Titans animated series. He is portrayed on The CW's live-action TV series Arrow by Manu Bennett, and by Joe Manganiello in the feature films of the DC Extended Universe, beginning with a cameo in 2017's Justice League.",
+                    "https://hqrock.files.wordpress.com/2011/05/deathstroke.jpg",
+                    CharacterType.VILLAIN),
+            new Character("Ares",
+                    "",
+                    "Ares (also known as Mars) is a fictional supervillain appearing in comic books published by DC Comics. Based on the Greek mythological figure of the same name, he is the Greek god of war and serves as the nemesis of the superhero Wonder Woman within the DC Universe.\n" +
+                            "\n" +
+                            "The character has appeared in various forms of media. Alfred Molina voiced him in the 2009 direct-to-video animated movie Wonder Woman. Ares later made his live-action debut in the 2017 film Wonder Woman, where he is portrayed by English actor David Thewlis.[1][2",
+                    "https://upload.wikimedia.org/wikipedia/en/2/25/AresDC2.png",
+                    CharacterType.VILLAIN),
+            new Character("Black Manta",
+                    "David Hyde",
+                    "Black Manta is one of Aquaman's greatest villains. His lethal high-tech suit allows him to survive underwater and adapt to any number of situations with an arsenal of destructive weaponry. Despite his prominence, Manta remains an enigmatic figure, his identity and his origins kept secret. The motivation for his villainy is a deep-seated hatred for the sea due to strong emotional reasons, and a personal vendetta against Aquaman. He has also been a member of O.G.R.E., the Injustice League, the Secret Society of Super-Villains, the Sinestro Corps and the Suicide Squad. Black Manta was created by Bob Haney and Nick Cardy, first appearing in Aquaman #35. (1967)",
+                    "http://www.rapsheet.co.uk/Images/Characters/BlackManta.jpg",
+                    CharacterType.VILLAIN),
+            new Character("Sinestro",
+                    "Thaal Sinestro",
+                    "Thaal Sinestro is a fictional supervillain appearing in American comic books published by DC Comics. Sinestro is a former Green Lantern Corps member who was dishonorably discharged for abusing his power. He is the archenemy of Hal Jordan and founder of the Sinestro Corps.",
+                    "https://pre00.deviantart.net/a2f6/th/pre/f/2015/052/e/c/how_to_draw_dc_villains___sinestro_by_timlevins-d8ixowu.jpg",
                     CharacterType.VILLAIN)));
 
     private static String getInsertHero(final Character character) {

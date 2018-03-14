@@ -12,7 +12,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
         android:layout_alignParentTop="true"
-        app:title="Heroes"
+        app:title="DC Characters"
         style="@style/HeaderBar"
         app:elevation="4dp"
         app:titleTextColor="@android:color/white"/>

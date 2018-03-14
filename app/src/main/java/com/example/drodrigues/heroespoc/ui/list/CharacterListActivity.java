@@ -148,11 +148,14 @@ public class CharacterListActivity extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(@NonNull final MenuItem item) {
-        progressBar.setVisibility(View.VISIBLE);
-        if (item.getItemId() == R.id.nav_heroes) {
-            getHeroes();
-        } else {
-            getVillains();
+        if (bottomNavigationView.getSelectedItemId() != item.getItemId()) {
+            characters.clear();
+            progressBar.setVisibility(View.VISIBLE);
+            if (item.getItemId() == R.id.nav_heroes) {
+                getHeroes();
+            } else {
+                getVillains();
+            }
         }
         return true;
     }

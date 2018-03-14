@@ -28,7 +28,7 @@ public class CharacterManager extends BaseManager {
                     @Override
                     protected OperationResult<List<Character>> doInBackground(Void... voids) {
                         try {
-                            Thread.sleep(3000);
+                            Thread.sleep(1500);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -66,7 +66,7 @@ public class CharacterManager extends BaseManager {
                     @Override
                     protected OperationResult<List<Character>> doInBackground(Void... voids) {
                         try {
-                            Thread.sleep(3000);
+                            Thread.sleep(1500);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
