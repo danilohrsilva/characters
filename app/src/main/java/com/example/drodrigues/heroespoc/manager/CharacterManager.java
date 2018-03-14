@@ -22,6 +22,7 @@ public class CharacterManager extends BaseManager {
 
 
     public void getAllHeroes(final OperationListener<List<Character>> listener) {
+        cancelOperations();
         AsyncTask<Void, Void, OperationResult<List<Character>>> task =
                 new AsyncTask<Void, Void, OperationResult<List<Character>>>() {
 
@@ -60,6 +61,7 @@ public class CharacterManager extends BaseManager {
     }
 
     public void getAllVillains(final OperationListener<List<Character>> listener) {
+        cancelOperations();
         AsyncTask<Void, Void, OperationResult<List<Character>>> task =
                 new AsyncTask<Void, Void, OperationResult<List<Character>>>() {
 
