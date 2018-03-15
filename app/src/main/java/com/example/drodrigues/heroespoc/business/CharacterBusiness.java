@@ -1,9 +1,13 @@
 package com.example.drodrigues.heroespoc.business;
 
+import android.util.Pair;
+
 import com.example.drodrigues.heroespoc.entity.Character;
+import com.example.drodrigues.heroespoc.entity.CharacterType;
 import com.example.drodrigues.heroespoc.gateway.database.dao.CharacterDao;
 import com.example.drodrigues.heroespoc.infrastructure.OperationResult;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -17,43 +21,38 @@ public class CharacterBusiness extends BaseBusiness {
         this.characterDao = characterDao;
     }
 
-    public OperationResult<List<Character>> getAllCharacters() {
-        final OperationResult<List<Character>> result = new OperationResult<>();
+    public OperationResult<Pair<List<Character>, List<Character>>> getAllCharacters() {
+        final OperationResult<Pair<List<Character>, List<Character>>> result = new OperationResult<>();
 
-        final List<Character> characters = characterDao.getAll();
+        final List<Character> allCharacters = characterDao.getAll();
 
-        if (characters != null && !characters.isEmpty()) {
-            result.setResult(characters);
-        } else {
-            result.setResult(Collections.<Character>emptyList());
+        final Pair<List<Character>, List<Character>> characters =
+                new Pair<>(getAllHeroes(allCharacters), getAllVillains(allCharacters));
+
+        result.setResult(characters);
+
+        return result;
+    }
+
+    private List<Character> getAllHeroes(final List<Character> allCharacters) {
+        final List<Character> result = new ArrayList<>();
+
+        for (final Character character : allCharacters) {
+            if (CharacterType.HERO.equals(character.getType())) {
+                result.add(character);
+            }
         }
 
         return result;
     }
 
-    public OperationResult<List<Character>> getAllHeroes() {
-        final OperationResult<List<Character>> result = new OperationResult<>();
+    private List<Character> getAllVillains(final List<Character> allCharacters) {
+        final List<Character> result = new ArrayList<>();
 
-        final List<Character> characters = characterDao.getAllHeroes();
-
-        if (characters != null && !characters.isEmpty()) {
-            result.setResult(characters);
-        } else {
-            result.setResult(Collections.<Character>emptyList());
-        }
-
-        return result;
-    }
-
-    public OperationResult<List<Character>> getAllVillains() {
-        final OperationResult<List<Character>> result = new OperationResult<>();
-
-        final List<Character> characters = characterDao.getAllVillains();
-
-        if (characters != null && !characters.isEmpty()) {
-            result.setResult(characters);
-        } else {
-            result.setResult(Collections.<Character>emptyList());
+        for (final Character character : allCharacters) {
+            if (CharacterType.VILLAIN.equals(character.getType())) {
+                result.add(character);
+            }
         }
 
         return result;

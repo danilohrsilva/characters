@@ -2,6 +2,7 @@ package com.example.drodrigues.heroespoc.manager;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Pair;
 
 import com.example.drodrigues.heroespoc.business.CharacterBusiness;
 import com.example.drodrigues.heroespoc.entity.Character;
@@ -21,23 +22,23 @@ public class CharacterManager extends BaseManager {
     }
 
 
-    public void getAllHeroes(final OperationListener<List<Character>> listener) {
+    public void getAllCharacters(final OperationListener<Pair<List<Character>, List<Character>>> listener) {
         cancelOperations();
-        AsyncTask<Void, Void, OperationResult<List<Character>>> task =
-                new AsyncTask<Void, Void, OperationResult<List<Character>>>() {
+        AsyncTask<Void, Void, OperationResult<Pair<List<Character>, List<Character>>>> task =
+                new AsyncTask<Void, Void, OperationResult<Pair<List<Character>, List<Character>>>>() {
 
                     @Override
-                    protected OperationResult<List<Character>> doInBackground(Void... voids) {
+                    protected OperationResult<Pair<List<Character>, List<Character>>> doInBackground(Void... voids) {
                         try {
                             Thread.sleep(1500);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        return characterBusiness.getAllHeroes();
+                        return characterBusiness.getAllCharacters();
                     }
 
                     @Override
-                    protected void onPostExecute(final OperationResult<List<Character>> operationResult) {
+                    protected void onPostExecute(final OperationResult<Pair<List<Character>, List<Character>>> operationResult) {
                         removeFromTaskList(this);
                         if (listener != null) {
                             if (operationResult.isOperationSuccessful()) {
@@ -57,54 +58,10 @@ public class CharacterManager extends BaseManager {
                     }
                 };
 
-        addTask(task);
-    }
-
-    public void getAllVillains(final OperationListener<List<Character>> listener) {
-        cancelOperations();
-        AsyncTask<Void, Void, OperationResult<List<Character>>> task =
-                new AsyncTask<Void, Void, OperationResult<List<Character>>>() {
-
-                    @Override
-                    protected OperationResult<List<Character>> doInBackground(Void... voids) {
-                        try {
-                            Thread.sleep(1500);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        return characterBusiness.getAllVillains();
-                    }
-
-                    @Override
-                    protected void onPostExecute(final OperationResult<List<Character>> operationResult) {
-                        removeFromTaskList(this);
-                        if (listener != null) {
-                            if (operationResult.isOperationSuccessful()) {
-                                listener.onSuccess(operationResult.getResult());
-                            } else {
-                                listener.onError(operationResult.getErrors());
-                            }
-                        }
-                    }
-
-                    @Override
-                    protected void onCancelled() {
-                        removeFromTaskList(this);
-                        if (listener != null) {
-                            listener.onCancel();
-                        }
-                    }
-                };
-
-        addTask(task);
-    }
-
-
-    private void addTask(final AsyncTask<Void, Void, OperationResult<List<Character>>> task) {
-        // Task execution
         addToTaskList(task);
         task.execute();
     }
+
 
 
 }

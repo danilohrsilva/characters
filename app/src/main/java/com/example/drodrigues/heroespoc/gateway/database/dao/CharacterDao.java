@@ -27,7 +27,7 @@ public class CharacterDao extends BaseDao<Character> {
 
     @Override
     public List<Character> getAll() {
-        final List <Character> result;
+        final List <Character> result = new ArrayList<>();
 
         final SQLiteDatabase db = getDBForRead();
 
@@ -40,51 +40,18 @@ public class CharacterDao extends BaseDao<Character> {
                     null,
                     null,
                     null);
-            result = getHeroes(cursor, null);
-        } finally {
-            closeDB();
-        }
 
-        return result;
-    }
+            if (cursor != null) {
+                try {
+                    while (cursor.moveToNext()) {
+                        final Character character = parseToObj(cursor);
+                        result.add(character);
+                    }
+                } finally {
+                    cursor.close();
+                }
+            }
 
-    public List<Character> getAllHeroes() {
-        final List <Character> result;
-
-        final SQLiteDatabase db = getDBForRead();
-
-        try {
-            final Cursor cursor = db.query(HeroesTable.TABLE_NAME,
-                    HeroesTable.getAllColumns(),
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null);
-            result = getHeroes(cursor, CharacterType.HERO);
-        } finally {
-            closeDB();
-        }
-
-        return result;
-    }
-
-    public List<Character> getAllVillains() {
-        final List <Character> result;
-
-        final SQLiteDatabase db = getDBForRead();
-
-        try {
-            final Cursor cursor = db.query(HeroesTable.TABLE_NAME,
-                    HeroesTable.getAllColumns(),
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null);
-            result = getHeroes(cursor, CharacterType.VILLAIN);
         } finally {
             closeDB();
         }
@@ -127,26 +94,5 @@ public class CharacterDao extends BaseDao<Character> {
         final String data = cursor.getString(cursor.getColumnIndex(HeroesTable.DATA));
 
         return Constants.gson.fromJson(data, Character.class);
-    }
-
-    @Nullable
-    private List<Character> getHeroes(final Cursor cursor, final CharacterType type) {
-        List<Character> result = null;
-
-        if (cursor != null) {
-            result = new ArrayList<>();
-
-            try {
-                while (cursor.moveToNext()) {
-                    final Character character = parseToObj(cursor);
-                    if (type == null || type.equals(character.getType())) {
-                        result.add(character);
-                    }
-                }
-            } finally {
-                cursor.close();
-            }
-        }
-        return result;
     }
 }
