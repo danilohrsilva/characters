@@ -34,6 +34,14 @@ public class CharacterBusiness extends BaseBusiness {
         return result;
     }
 
+    public OperationResult<Boolean> saveCharacter(final Character character) {
+        OperationResult<Boolean> result = new OperationResult<>();
+
+        result.setResult(characterDao.add(character));
+
+        return result;
+    }
+
     private List<Character> getAllHeroes(final List<Character> allCharacters) {
         final List<Character> result = new ArrayList<>();
 

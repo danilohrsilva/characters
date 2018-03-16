@@ -12,12 +12,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class HeroesTable {
+public class CharacterTable {
 
-    private HeroesTable() {
+    private CharacterTable() {
     }
 
-    public static final String TABLE_NAME = "heroes";
+    public static final String TABLE_NAME = "characters";
 
     public static final String ID = "_id";
     public static final String DATA = "data";
@@ -184,27 +184,14 @@ public class HeroesTable {
                     "https://pre00.deviantart.net/a2f6/th/pre/f/2015/052/e/c/how_to_draw_dc_villains___sinestro_by_timlevins-d8ixowu.jpg",
                     CharacterType.VILLAIN)));
 
-    private static String getInsertHero(final Character character) {
-        START_ID = START_ID++;
-        return Database.INSERT_INTO + TABLE_NAME + Database.TABLE_SEPARATOR_OPEN
-                + ID + Database.COLUMN_SEPARATOR + DATA + Database.TABLE_SEPARATOR_CLOSE
-                + Database.VALUES + Database.TABLE_SEPARATOR_OPEN + START_ID + Database.COLUMN_SEPARATOR
-                + Database.STRING_SEPARATOR + Constants.gson.toJson(character) + Database.STRING_SEPARATOR
-                + Database.TABLE_SEPARATOR_CLOSE + Database.LINE_SEPARATOR;
+    public static String getCharacterString(final Character character) {
+        return Constants.gson.toJson(character);
     }
 
-    public static String getInsertInitialHeroes() {
-        final StringBuilder sql = new StringBuilder();
-        for (final Character character : INITIAL_CHARACTERS) {
-            sql.append(getInsertHero(character));
-        }
-        return sql.toString();
-    }
-
-    public static void insertInitialHeroes(final SQLiteStatement statement) {
+    public static void insertInitialCharacters(final SQLiteStatement statement) {
         for (final Character character : INITIAL_CHARACTERS) {
             statement.clearBindings();
-            statement.bindString(1, Constants.gson.toJson(character));
+            statement.bindString(1, getCharacterString(character));
             statement.execute();
         }
     }

@@ -4,11 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.annotation.Nullable;
 
 import com.example.drodrigues.heroespoc.entity.Character;
-import com.example.drodrigues.heroespoc.entity.CharacterType;
-import com.example.drodrigues.heroespoc.gateway.database.tables.HeroesTable;
+import com.example.drodrigues.heroespoc.gateway.database.tables.CharacterTable;
 import com.example.drodrigues.heroespoc.infrastructure.Constants;
 
 import java.util.ArrayList;
@@ -32,8 +30,8 @@ public class CharacterDao extends BaseDao<Character> {
         final SQLiteDatabase db = getDBForRead();
 
         try {
-            final Cursor cursor = db.query(HeroesTable.TABLE_NAME,
-                    HeroesTable.getAllColumns(),
+            final Cursor cursor = db.query(CharacterTable.TABLE_NAME,
+                    CharacterTable.getAllColumns(),
                     null,
                     null,
                     null,
@@ -60,8 +58,20 @@ public class CharacterDao extends BaseDao<Character> {
     }
 
     @Override
-    public boolean add(Character data) {
-        return false;
+    public boolean add(final Character character) {
+
+        long result = -1;
+
+        final SQLiteDatabase db = getDBForWrite();
+
+        try {
+            final ContentValues values = parseToValues(character);
+            result = db.insertOrThrow(CharacterTable.TABLE_NAME, null, values);
+        } finally {
+            closeDB();
+        }
+
+        return result != -1;
     }
 
     @Override
@@ -85,13 +95,17 @@ public class CharacterDao extends BaseDao<Character> {
     }
 
     @Override
-    public ContentValues parseToValues(Character data) {
-        return null;
+    public ContentValues parseToValues(final Character character) {
+        final ContentValues values =  new ContentValues();
+
+        values.put(CharacterTable.DATA, CharacterTable.getCharacterString(character));
+
+        return values;
     }
 
     private static Character parseToObj(final Cursor cursor) {
 
-        final String data = cursor.getString(cursor.getColumnIndex(HeroesTable.DATA));
+        final String data = cursor.getString(cursor.getColumnIndex(CharacterTable.DATA));
 
         return Constants.gson.fromJson(data, Character.class);
     }

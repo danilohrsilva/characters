@@ -4,18 +4,18 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.drodrigues.heroespoc.gateway.database.HeroesDatabase;
+import com.example.drodrigues.heroespoc.gateway.database.CharactersDatabase;
 
 import java.util.List;
 
 abstract class BaseDao<T> {
 
     private final Context mContext;
-    private final HeroesDatabase dataBase;
+    private final CharactersDatabase dataBase;
 
     public BaseDao(final Context context) {
         this.mContext = context;
-        this.dataBase = new HeroesDatabase(this.mContext);
+        this.dataBase = new CharactersDatabase(this.mContext);
     }
 
     public SQLiteDatabase getDBForRead() {

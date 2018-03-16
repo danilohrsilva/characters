@@ -54,8 +54,6 @@ public class CharacterListActivity extends AppCompatActivity
 
     private CharacterManager mCharacterManager;
 
-    private CharacterPagerAdapter pagerAdapter;
-
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -156,9 +154,18 @@ public class CharacterListActivity extends AppCompatActivity
     }
 
     @OnClick(R.id.fab_add_hero)
-    void startShipment() {
+    void newHero() {
+        openNewCharacter(CharacterType.HERO);
+    }
+
+    @OnClick(R.id.fab_add_villain)
+    void newVillain() {
+        openNewCharacter(CharacterType.VILLAIN);
+    }
+
+    private void openNewCharacter(final CharacterType type) {
         final Intent intent = new Intent(this, NewCharacterActivity.class);
-        intent.putExtra(NewCharacterActivity.EXTRA_CHARACTER_TYPE, CharacterType.HERO);
+        intent.putExtra(NewCharacterActivity.EXTRA_CHARACTER_TYPE, type);
         startActivity(intent);
     }
 }
