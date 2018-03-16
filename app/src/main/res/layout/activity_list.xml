@@ -48,4 +48,36 @@
         app:itemIconTint="@android:color/white"
         app:itemTextColor="@android:color/white"/>
 
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/fab_add_character"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:menu_colorNormal="@color/darkBlue"
+        app:menu_colorPressed="@color/darkBlue"
+        app:menu_colorRipple="@color/darkBlue"
+        app:menu_fab_label="Fechar"
+        android:layout_above="@id/bottom_nav_view"
+        android:layout_alignParentEnd="true">
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_add_hero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/greyDark"
+            app:fab_colorPressed="@color/greyDark"
+            app:fab_colorRipple="@color/greyDark"
+            android:src="@drawable/img_spider_man_face"
+            app:fab_label="Novo herói"/>
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_add_villain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            app:fab_colorNormal="@color/greyDark"
+            app:fab_colorPressed="@color/greyDark"
+            app:fab_colorRipple="@color/greyDark"
+            android:src="@drawable/img_venom_face"
+            app:fab_label="Novo vilão"/>
+    </com.github.clans.fab.FloatingActionMenu>
+
 </RelativeLayout>

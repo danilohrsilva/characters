@@ -2,12 +2,10 @@ package com.example.drodrigues.heroespoc.ui.list;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Pair;
 import android.view.MenuItem;
@@ -16,17 +14,18 @@ import android.widget.ProgressBar;
 
 import com.example.drodrigues.heroespoc.R;
 import com.example.drodrigues.heroespoc.entity.Character;
-import com.example.drodrigues.heroespoc.infrastructure.OperationError;
+import com.example.drodrigues.heroespoc.entity.CharacterType;
 import com.example.drodrigues.heroespoc.infrastructure.OperationListener;
 import com.example.drodrigues.heroespoc.manager.CharacterManager;
-import com.example.drodrigues.heroespoc.ui.detail.CharacterDetailActivity;
+import com.example.drodrigues.heroespoc.ui.newcharacter.NewCharacterActivity;
+import com.github.clans.fab.FloatingActionButton;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class CharacterListActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener,
@@ -43,6 +42,12 @@ public class CharacterListActivity extends AppCompatActivity
 
     @BindView(R.id.characters_list_view_pager)
     protected ViewPager viewPage;
+
+    @BindView(R.id.fab_add_hero)
+    protected FloatingActionButton fabAddHero;
+
+    @BindView(R.id.fab_add_villain)
+    protected FloatingActionButton fabAddVillain;
 
 
     private Pair<List<Character>, List<Character>> characters;
@@ -148,5 +153,12 @@ public class CharacterListActivity extends AppCompatActivity
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
+    }
+
+    @OnClick(R.id.fab_add_hero)
+    void startShipment() {
+        final Intent intent = new Intent(this, NewCharacterActivity.class);
+        intent.putExtra(NewCharacterActivity.EXTRA_CHARACTER_TYPE, CharacterType.HERO);
+        startActivity(intent);
     }
 }

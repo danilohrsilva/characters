@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/hero_img"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:contentDescription="Heroes picture"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_launcher_background"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"/>
+
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/character_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nome"
+        android:minLines="1"
+        android:maxLines="1"
+        android:maxLength="30"
+        android:layout_below="@id/hero_img"
+        android:layout_margin="15dp"/>
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/character_secret_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/character_name"
+        android:layout_margin="15dp"
+        android:hint="Identidade secreta"
+        android:minLines="1"
+        android:maxLines="1"
+        android:maxLength="30"/>
+
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/character_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/character_secret_name"
+        android:layout_margin="15dp"
+        android:hint="Descrição"
+        android:minLines="4"
+        android:maxLines="4" />
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/character_pic_url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/character_description"
+        android:layout_margin="15dp"
+        android:hint="URL da foto"
+        android:minLines="1"
+        android:maxLines="1" />
+
+</RelativeLayout>

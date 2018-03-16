@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.detail.CharacterDetailActivity" />
+        <activity android:name=".ui.newcharacter.NewCharacterActivity" />
     </application>
 
 </manifest>
