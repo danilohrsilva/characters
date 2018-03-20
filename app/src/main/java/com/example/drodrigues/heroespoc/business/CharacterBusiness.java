@@ -5,11 +5,18 @@ import android.util.Pair;
 import com.example.drodrigues.heroespoc.entity.Character;
 import com.example.drodrigues.heroespoc.entity.CharacterType;
 import com.example.drodrigues.heroespoc.gateway.database.dao.CharacterDao;
+import com.example.drodrigues.heroespoc.infrastructure.Constants;
+import com.example.drodrigues.heroespoc.infrastructure.OperationError;
 import com.example.drodrigues.heroespoc.infrastructure.OperationResult;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static com.example.drodrigues.heroespoc.infrastructure.Constants.Errors.NEW_CHARACTER_EMPTY_DESCRIPTION;
+import static com.example.drodrigues.heroespoc.infrastructure.Constants.Errors.NEW_CHARACTER_EMPTY_NAME;
+import static com.example.drodrigues.heroespoc.infrastructure.Constants.Errors.NEW_CHARACTER_EMPTY_PICTURE;
+import static com.example.drodrigues.heroespoc.infrastructure.Constants.Errors.NEW_CHARACTER_TYPE;
 
 public class CharacterBusiness extends BaseBusiness {
 
@@ -35,11 +42,39 @@ public class CharacterBusiness extends BaseBusiness {
     }
 
     public OperationResult<Boolean> saveCharacter(final Character character) {
-        OperationResult<Boolean> result = new OperationResult<>();
+        final OperationResult<Boolean> result = new OperationResult<>();
 
-        result.setResult(characterDao.add(character));
+        final List<OperationError> errors = validateCharacter(character);
+
+        if (errors.isEmpty()) {
+            result.setResult(characterDao.add(character));
+        } else {
+            result.addAllErrors(errors);
+        }
 
         return result;
+    }
+
+    private List<OperationError> validateCharacter(final Character character) {
+        final List<OperationError> errors = new ArrayList<>();
+
+        if (character.getName().isEmpty()) {
+            errors.add(new OperationError(NEW_CHARACTER_EMPTY_NAME, "Name can not be empty"));
+        }
+
+        if (character.getType() == null) {
+            errors.add(new OperationError(NEW_CHARACTER_TYPE, "The character must have a type"));
+        }
+
+        if (character.getDescription().isEmpty()) {
+            errors.add(new OperationError(NEW_CHARACTER_EMPTY_DESCRIPTION, "The character must have a description"));
+        }
+
+        if (character.getPicture().isEmpty()) {
+            errors.add(new OperationError(NEW_CHARACTER_EMPTY_PICTURE, "The character must have a picture"));
+        }
+
+        return errors;
     }
 
     private List<Character> getAllHeroes(final List<Character> allCharacters) {

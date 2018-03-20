@@ -62,6 +62,36 @@ public class CharacterManager extends BaseManager {
         task.execute();
     }
 
+    public void newCharacter(final Character character, final OperationListener<Boolean> listener) {
+        AsyncTask<Void, Void, OperationResult<Boolean>> task =
+                new AsyncTask<Void, Void, OperationResult<Boolean>>() {
+                    @Override
+                    protected OperationResult<Boolean> doInBackground(Void... voids) {
+                        return characterBusiness.saveCharacter(character);
+                    }
 
+                    @Override
+                    protected void onPostExecute(final OperationResult<Boolean> operationResult) {
+                        removeFromTaskList(this);
+                        if (listener != null) {
+                            if (operationResult.isOperationSuccessful()) {
+                                listener.onSuccess(operationResult.getResult());
+                            } else {
+                                listener.onError(operationResult.getErrors());
+                            }
+                        }
+                    }
+
+                    @Override
+                    protected void onCancelled() {
+                        removeFromTaskList(this);
+                        if (listener != null) {
+                            listener.onCancel();
+                        }
+                    }
+                };
+        addToTaskList(task);
+        task.execute();
+    }
 
 }

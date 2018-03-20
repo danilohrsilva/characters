@@ -163,9 +163,35 @@ public class CharacterListActivity extends AppCompatActivity
         openNewCharacter(CharacterType.VILLAIN);
     }
 
+    @Override
+    protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (NewCharacterActivity.NEW_CHARACTER_CODE == requestCode) {
+            if (resultCode == RESULT_OK) {
+                if (data.hasExtra(NewCharacterActivity.EXTRA_CHARACTER) &&
+                    data.hasExtra(NewCharacterActivity.EXTRA_CHARACTER_TYPE)) {
+                    addCharacter((Character) data.getSerializableExtra(NewCharacterActivity.EXTRA_CHARACTER),
+                            (CharacterType) data.getSerializableExtra(NewCharacterActivity.EXTRA_CHARACTER_TYPE));
+                }
+            }
+        }
+    }
+
     private void openNewCharacter(final CharacterType type) {
         final Intent intent = new Intent(this, NewCharacterActivity.class);
         intent.putExtra(NewCharacterActivity.EXTRA_CHARACTER_TYPE, type);
-        startActivity(intent);
+        startActivityForResult(intent, NewCharacterActivity.NEW_CHARACTER_CODE);
+    }
+
+    private void addCharacter(final Character character, final CharacterType type) {
+        final List<Character> heroes = characters.first;
+        final List<Character> villains = characters.second;
+        if (CharacterType.HERO.equals(type)) {
+            heroes.add(character);
+        } else {
+            villains.add(character);
+        }
+
+        characters = new Pair<>(heroes, villains);
     }
 }

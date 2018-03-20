@@ -12,6 +12,13 @@ public class Constants {
             .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
             .create();
 
+    public static final class Errors {
+        public static final int NEW_CHARACTER_EMPTY_NAME = 10001;
+        public static final int NEW_CHARACTER_TYPE = 10002;
+        public static final int NEW_CHARACTER_EMPTY_DESCRIPTION = 10003;
+        public static final int NEW_CHARACTER_EMPTY_PICTURE = 10004;
+    }
+
     public static final class Database {
         public static final String CREATE_TABLE = "CREATE TABLE ";
         public static final String TABLE_SEPARATOR_OPEN = " ( ";

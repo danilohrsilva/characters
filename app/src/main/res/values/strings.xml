@@ -7,4 +7,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="new_character_name_empty">Name is mandatory</string>
+    <string name="new_character_description_empty">Description is mandatory</string>
+    <string name="new_character_picture_empty">Picture is mandatory</string>
 </resources>
