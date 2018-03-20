@@ -12,7 +12,6 @@ import android.widget.Toast;
 import com.example.drodrigues.heroespoc.R;
 import com.example.drodrigues.heroespoc.entity.Character;
 import com.example.drodrigues.heroespoc.entity.CharacterType;
-import com.example.drodrigues.heroespoc.infrastructure.Constants;
 import com.example.drodrigues.heroespoc.infrastructure.Constants.Errors;
 import com.example.drodrigues.heroespoc.infrastructure.OperationError;
 import com.example.drodrigues.heroespoc.infrastructure.OperationListener;
@@ -90,7 +89,6 @@ public class NewCharacterActivity extends AppCompatActivity{
                 Toast.makeText(NewCharacterActivity.this, "Character saved", Toast.LENGTH_SHORT).show();
                 final Intent returnIntent = new Intent();
                 returnIntent.putExtra(NewCharacterActivity.EXTRA_CHARACTER, character);
-                returnIntent.putExtra(NewCharacterActivity.EXTRA_CHARACTER_TYPE, type);
                 setResult(RESULT_OK, returnIntent);
                 finish();
             }

@@ -168,10 +168,16 @@ public class CharacterListActivity extends AppCompatActivity
         super.onActivityResult(requestCode, resultCode, data);
         if (NewCharacterActivity.NEW_CHARACTER_CODE == requestCode) {
             if (resultCode == RESULT_OK) {
-                if (data.hasExtra(NewCharacterActivity.EXTRA_CHARACTER) &&
-                    data.hasExtra(NewCharacterActivity.EXTRA_CHARACTER_TYPE)) {
-                    addCharacter((Character) data.getSerializableExtra(NewCharacterActivity.EXTRA_CHARACTER),
-                            (CharacterType) data.getSerializableExtra(NewCharacterActivity.EXTRA_CHARACTER_TYPE));
+                if (data.hasExtra(NewCharacterActivity.EXTRA_CHARACTER)) {
+
+                    final Character characterAdded = (Character) data.getSerializableExtra(NewCharacterActivity.EXTRA_CHARACTER);
+                    addCharacter(characterAdded);
+                    if (CharacterType.HERO.equals(characterAdded.getType())) {
+                        viewPage.setCurrentItem(0, true);
+                    } else {
+                        viewPage.setCurrentItem(1, true);
+                    }
+
                 }
             }
         }
@@ -183,10 +189,10 @@ public class CharacterListActivity extends AppCompatActivity
         startActivityForResult(intent, NewCharacterActivity.NEW_CHARACTER_CODE);
     }
 
-    private void addCharacter(final Character character, final CharacterType type) {
+    private void addCharacter(final Character character) {
         final List<Character> heroes = characters.first;
         final List<Character> villains = characters.second;
-        if (CharacterType.HERO.equals(type)) {
+        if (CharacterType.HERO.equals(character.getType())) {
             heroes.add(character);
         } else {
             villains.add(character);
