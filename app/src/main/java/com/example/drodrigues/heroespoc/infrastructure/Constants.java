@@ -3,6 +3,10 @@ package com.example.drodrigues.heroespoc.infrastructure;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class Constants {
 
     private Constants() {
@@ -33,4 +37,20 @@ public class Constants {
         public static final String BIND_CHAR = "?";
     }
 
+    public static final class StringUtils {
+
+        private static final String MD5 = "MD5";
+
+        public static String md5(final String str) {
+            try {
+                final MessageDigest m = MessageDigest.getInstance(MD5);
+                m.update(str.getBytes(), 0, str.length());
+
+                return new BigInteger(1, m.digest()).toString(16);
+
+            } catch (NoSuchAlgorithmException e) {
+                return "";
+            }
+        }
+    }
 }

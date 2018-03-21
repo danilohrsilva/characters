@@ -5,12 +5,10 @@ import android.util.Pair;
 import com.example.drodrigues.heroespoc.entity.Character;
 import com.example.drodrigues.heroespoc.entity.CharacterType;
 import com.example.drodrigues.heroespoc.gateway.database.dao.CharacterDao;
-import com.example.drodrigues.heroespoc.infrastructure.Constants;
 import com.example.drodrigues.heroespoc.infrastructure.OperationError;
 import com.example.drodrigues.heroespoc.infrastructure.OperationResult;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static com.example.drodrigues.heroespoc.infrastructure.Constants.Errors.NEW_CHARACTER_EMPTY_DESCRIPTION;
@@ -81,7 +79,7 @@ public class CharacterBusiness extends BaseBusiness {
         final List<Character> result = new ArrayList<>();
 
         for (final Character character : allCharacters) {
-            if (CharacterType.HERO.equals(character.getType())) {
+            if (CharacterType.DC_HERO.equals(character.getType())) {
                 result.add(character);
             }
         }
@@ -93,7 +91,7 @@ public class CharacterBusiness extends BaseBusiness {
         final List<Character> result = new ArrayList<>();
 
         for (final Character character : allCharacters) {
-            if (CharacterType.VILLAIN.equals(character.getType())) {
+            if (CharacterType.DC_VILLAIN.equals(character.getType())) {
                 result.add(character);
             }
         }

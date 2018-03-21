@@ -155,12 +155,12 @@ public class CharacterListActivity extends AppCompatActivity
 
     @OnClick(R.id.fab_add_hero)
     void newHero() {
-        openNewCharacter(CharacterType.HERO);
+        openNewCharacter(CharacterType.DC_HERO);
     }
 
     @OnClick(R.id.fab_add_villain)
     void newVillain() {
-        openNewCharacter(CharacterType.VILLAIN);
+        openNewCharacter(CharacterType.DC_VILLAIN);
     }
 
     @Override
@@ -172,7 +172,7 @@ public class CharacterListActivity extends AppCompatActivity
 
                     final Character characterAdded = (Character) data.getSerializableExtra(NewCharacterActivity.EXTRA_CHARACTER);
                     addCharacter(characterAdded);
-                    if (CharacterType.HERO.equals(characterAdded.getType())) {
+                    if (CharacterType.DC_HERO.equals(characterAdded.getType())) {
                         viewPage.setCurrentItem(0, true);
                     } else {
                         viewPage.setCurrentItem(1, true);
@@ -192,7 +192,7 @@ public class CharacterListActivity extends AppCompatActivity
     private void addCharacter(final Character character) {
         final List<Character> heroes = characters.first;
         final List<Character> villains = characters.second;
-        if (CharacterType.HERO.equals(character.getType())) {
+        if (CharacterType.DC_HERO.equals(character.getType())) {
             heroes.add(character);
         } else {
             villains.add(character);
