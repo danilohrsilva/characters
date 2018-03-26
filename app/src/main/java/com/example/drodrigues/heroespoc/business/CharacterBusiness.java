@@ -5,6 +5,7 @@ import android.util.Pair;
 import com.example.drodrigues.heroespoc.entity.Character;
 import com.example.drodrigues.heroespoc.entity.CharacterType;
 import com.example.drodrigues.heroespoc.gateway.database.dao.CharacterDao;
+import com.example.drodrigues.heroespoc.gateway.network.MarvelIntegrator;
 import com.example.drodrigues.heroespoc.infrastructure.OperationError;
 import com.example.drodrigues.heroespoc.infrastructure.OperationResult;
 
@@ -19,11 +20,14 @@ import static com.example.drodrigues.heroespoc.infrastructure.Constants.Errors.N
 public class CharacterBusiness extends BaseBusiness {
 
     private final CharacterDao characterDao;
+    private final MarvelIntegrator marvelIntegrator;
 
 
-    public CharacterBusiness(final CharacterDao characterDao) {
+    public CharacterBusiness(final CharacterDao characterDao,
+                             final MarvelIntegrator marvelIntegrator) {
         super();
         this.characterDao = characterDao;
+        this.marvelIntegrator = marvelIntegrator;
     }
 
     public OperationResult<Pair<List<Character>, List<Character>>> getAllCharacters() {
@@ -51,6 +55,10 @@ public class CharacterBusiness extends BaseBusiness {
         }
 
         return result;
+    }
+
+    public OperationResult<List<Character>> getMarvelCharacters() {
+        return marvelIntegrator.getMarvelCharacters();
     }
 
     private List<OperationError> validateCharacter(final Character character) {

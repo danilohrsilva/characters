@@ -3,6 +3,8 @@ package com.example.drodrigues.heroespoc.gateway.network;
 import android.support.annotation.NonNull;
 
 import com.example.drodrigues.heroespoc.infrastructure.Constants.StringUtils;
+import com.example.drodrigues.heroespoc.infrastructure.OperationError;
+import com.example.drodrigues.heroespoc.infrastructure.OperationResult;
 
 import java.io.IOException;
 import java.util.Date;
@@ -30,7 +32,7 @@ public class BackendIntegrator {
             new Retrofit.Builder()
                     .addConverterFactory(GsonConverterFactory.create());
 
-    private static <S> S createServiceMarvelAuthentication(final Class<S> serviceClass) {
+    public static <S> S createServiceMarvelAuthentication(final Class<S> serviceClass) {
         httpClient.interceptors().clear();
         final MarvelAuthenticationInterceptor authenticationInterceptor = new MarvelAuthenticationInterceptor();
         httpClient.addInterceptor(authenticationInterceptor);
@@ -71,5 +73,31 @@ public class BackendIntegrator {
 
             return chain.proceed(request);
         }
+    }
+
+    protected void validateDefaultErrors(int errorCode, OperationResult result) {
+        switch(errorCode) {
+            case 400:
+                result.addError(new OperationError(errorCode, "One or more invalid parameters."));
+                break;
+            case 401:
+                result.addError(new OperationError(errorCode, "The request requires user authentication."));
+                break;
+            case 403:
+                result.addError(new OperationError(errorCode, "The user is not authorized to invoke this request."));
+                break;
+            case 404:
+                result.addError(new OperationError(errorCode, "The specified resource was not found."));
+                break;
+            case 422:
+                result.addError(new OperationError(errorCode, "The parameters are correct but it was unable to process the request."));
+                break;
+            case 500:
+                result.addError(new OperationError(errorCode, "The server encountered an unexpected condition which prevented it from fulfilling the request."));
+                break;
+            default:
+                result.addError(new OperationError(1000, "Generic error"));
+        }
+
     }
 }

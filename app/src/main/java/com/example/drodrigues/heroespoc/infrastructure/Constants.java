@@ -17,10 +17,12 @@ public class Constants {
             .create();
 
     public static final class Errors {
-        public static final int NEW_CHARACTER_EMPTY_NAME = 10001;
-        public static final int NEW_CHARACTER_TYPE = 10002;
-        public static final int NEW_CHARACTER_EMPTY_DESCRIPTION = 10003;
-        public static final int NEW_CHARACTER_EMPTY_PICTURE = 10004;
+        public static final int INTERNET_NOT_AVAILABLE = 10000;
+
+        public static final int NEW_CHARACTER_EMPTY_NAME = 10101;
+        public static final int NEW_CHARACTER_TYPE = 10102;
+        public static final int NEW_CHARACTER_EMPTY_DESCRIPTION = 10103;
+        public static final int NEW_CHARACTER_EMPTY_PICTURE = 10104;
     }
 
     public static final class Database {

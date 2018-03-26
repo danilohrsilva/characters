@@ -9,6 +9,7 @@ import com.example.drodrigues.heroespoc.entity.Character;
 import com.example.drodrigues.heroespoc.infrastructure.OperationListener;
 import com.example.drodrigues.heroespoc.infrastructure.OperationResult;
 import com.example.drodrigues.heroespoc.infrastructure.factory.DaoFactory;
+import com.example.drodrigues.heroespoc.infrastructure.factory.IntegratorFactory;
 
 import java.util.List;
 
@@ -18,7 +19,8 @@ public class CharacterManager extends BaseManager {
 
     public CharacterManager(final Context context) {
         super(context);
-        characterBusiness = new CharacterBusiness(DaoFactory.getInstance().createHeroDao(context));
+        characterBusiness = new CharacterBusiness(DaoFactory.getInstance().createHeroDao(context),
+                IntegratorFactory.getInstance().marvelIntegrator());
     }
 
 
