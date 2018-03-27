@@ -11,10 +11,12 @@ import android.util.Pair;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.drodrigues.heroespoc.R;
 import com.example.drodrigues.heroespoc.entity.Character;
 import com.example.drodrigues.heroespoc.entity.CharacterType;
+import com.example.drodrigues.heroespoc.infrastructure.OperationError;
 import com.example.drodrigues.heroespoc.infrastructure.OperationListener;
 import com.example.drodrigues.heroespoc.manager.CharacterManager;
 import com.example.drodrigues.heroespoc.ui.newcharacter.NewCharacterActivity;
@@ -52,6 +54,8 @@ public class CharacterListActivity extends AppCompatActivity
 
     private Pair<List<Character>, List<Character>> characters;
 
+    private List<Character> marvelCharacters;
+
     private CharacterManager mCharacterManager;
 
     @Override
@@ -65,11 +69,15 @@ public class CharacterListActivity extends AppCompatActivity
         initBottomNavigation();
         progressBar.setVisibility(View.VISIBLE);
         if (savedInstanceState!= null && (savedInstanceState.containsKey("heroes") &&
-                savedInstanceState.containsKey("villains"))) {
+                savedInstanceState.containsKey("villains") &&
+                savedInstanceState.containsKey("marvel"))) {
 
             characters = new Pair<>((List<Character>) savedInstanceState.getSerializable("heroes"),
                     (List<Character>) savedInstanceState.getSerializable("villains"));
-            viewPage.setAdapter(new CharacterPagerAdapter(getSupportFragmentManager(), characters));
+
+            marvelCharacters = (List<Character>) savedInstanceState.getSerializable("marvel");
+
+            viewPage.setAdapter(new CharacterPagerAdapter(getSupportFragmentManager(), characters, marvelCharacters));
             progressBar.setVisibility(View.GONE);
 
         } else {
@@ -78,8 +86,23 @@ public class CharacterListActivity extends AppCompatActivity
                 public void onSuccess(Pair<List<Character>, List<Character>> result) {
                     super.onSuccess(result);
                     characters = result;
-                    progressBar.setVisibility(View.GONE);
-                    viewPage.setAdapter(new CharacterPagerAdapter(getSupportFragmentManager(), characters));
+
+                    mCharacterManager.getMarvelCharacters(new OperationListener<List<Character>>() {
+                        @Override
+                        public void onSuccess(List<Character> result) {
+                            super.onSuccess(result);
+                            marvelCharacters = result;
+                            progressBar.setVisibility(View.GONE);
+                            viewPage.setAdapter(new CharacterPagerAdapter(getSupportFragmentManager(), characters, marvelCharacters));
+                        }
+
+                        @Override
+                        public void onError(List<OperationError> errors) {
+                            super.onError(errors);
+                            progressBar.setVisibility(View.GONE);
+                            Toast.makeText(CharacterListActivity.this, "Erro", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             });
 
@@ -109,9 +132,10 @@ public class CharacterListActivity extends AppCompatActivity
 
     @Override
     protected void onSaveInstanceState(final Bundle savedInstanceState) {
-        if (!characters.first.isEmpty() || !characters.second.isEmpty()) {
+        if (!characters.first.isEmpty() || !characters.second.isEmpty() || !marvelCharacters.isEmpty()) {
             savedInstanceState.putSerializable("heroes", (Serializable) characters.first);
             savedInstanceState.putSerializable("villains", (Serializable) characters.second);
+            savedInstanceState.putSerializable("marvel", (Serializable) marvelCharacters);
         }
 
         super.onSaveInstanceState(savedInstanceState);

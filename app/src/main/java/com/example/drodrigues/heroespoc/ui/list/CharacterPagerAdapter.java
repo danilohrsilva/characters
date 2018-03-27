@@ -11,14 +11,18 @@ import java.util.List;
 
 public class CharacterPagerAdapter extends FragmentPagerAdapter {
 
-    private static int QT_ITEMS = 2;
+    private static int QT_ITEMS = 3;
 
     private static Pair<List<Character>, List<Character>> characters;
 
+    private static List<Character> marvelCharacters;
+
     public CharacterPagerAdapter(final FragmentManager fragmentManager,
-                                 final Pair<List<Character>, List<Character>> characters) {
+                                 final Pair<List<Character>, List<Character>> characters,
+                                 final List<Character> marvelCharacters) {
         super(fragmentManager);
         this.characters = characters;
+        this.marvelCharacters = marvelCharacters;
     }
 
     @Override
@@ -28,6 +32,8 @@ public class CharacterPagerAdapter extends FragmentPagerAdapter {
                 return CharactersFragment.newInstance(characters.first);
             case 1: // Fragment # 0 - This will show FirstFragment different title
                 return CharactersFragment.newInstance(characters.second);
+            case 2:
+                return CharactersFragment.newInstance(marvelCharacters);
             default:
                 return null;
         }

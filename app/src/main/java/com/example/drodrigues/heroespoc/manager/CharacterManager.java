@@ -96,4 +96,40 @@ public class CharacterManager extends BaseManager {
         task.execute();
     }
 
+    public void getMarvelCharacters(final OperationListener<List<Character>> listener) {
+        cancelOperations();
+        AsyncTask<Void, Void, OperationResult<List<Character>>> task =
+                new AsyncTask<Void, Void, OperationResult<List<Character>>>() {
+
+                    @Override
+                    protected OperationResult<List<Character>> doInBackground(Void... voids) {
+                        return characterBusiness.getMarvelCharacters();
+                    }
+
+                    @Override
+                    protected void onPostExecute(final OperationResult<List<Character>> operationResult) {
+                        removeFromTaskList(this);
+                        if (listener != null) {
+                            if (operationResult.isOperationSuccessful()) {
+                                listener.onSuccess(operationResult.getResult());
+                            } else {
+                                listener.onError(operationResult.getErrors());
+                            }
+                        }
+                    }
+
+                    @Override
+                    protected void onCancelled() {
+                        removeFromTaskList(this);
+                        if (listener != null) {
+                            listener.onCancel();
+                        }
+                    }
+
+                };
+
+        addToTaskList(task);
+        task.execute();
+    }
+
 }

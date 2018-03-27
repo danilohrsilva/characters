@@ -61,7 +61,7 @@ public class BackendIntegrator {
             Request request = chain.request();
             final HttpUrl originalUrl = request.url();
 
-            final String hash = StringUtils.md5(TS + PRIVATE_KEY + API_KEY_VALUE);
+            final String hash = StringUtils.md5(TS_VALUE + PRIVATE_KEY + API_KEY_VALUE);
 
             final HttpUrl url = originalUrl.newBuilder()
                     .addQueryParameter(TS, TS_VALUE)
