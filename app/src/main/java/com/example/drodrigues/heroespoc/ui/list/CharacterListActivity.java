@@ -58,6 +58,8 @@ public class CharacterListActivity extends AppCompatActivity
 
     private CharacterManager mCharacterManager;
 
+    private int offset = 0;
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,7 +104,7 @@ public class CharacterListActivity extends AppCompatActivity
                             progressBar.setVisibility(View.GONE);
                             Toast.makeText(CharacterListActivity.this, "Erro", Toast.LENGTH_SHORT).show();
                         }
-                    });
+                    }, offset);
                 }
             });
 
@@ -118,8 +120,10 @@ public class CharacterListActivity extends AppCompatActivity
             public void onPageSelected(int position) {
                 if (position == 0) {
                     bottomNavigationView.setSelectedItemId(R.id.nav_heroes);
-                } else {
+                } else if (position == 1) {
                     bottomNavigationView.setSelectedItemId(R.id.nav_villains);
+                } else {
+                    bottomNavigationView.setSelectedItemId(R.id.nav_marvel);
                 }
             }
 
@@ -165,8 +169,10 @@ public class CharacterListActivity extends AppCompatActivity
         if (bottomNavigationView.getSelectedItemId() != item.getItemId()) {
             if (item.getItemId() == R.id.nav_heroes) {
                 viewPage.setCurrentItem(0, true);
-            } else {
+            } else if (item.getItemId() == R.id.nav_villains){
                 viewPage.setCurrentItem(1, true);
+            } else {
+                viewPage.setCurrentItem(2, true);
             }
         }
         return true;

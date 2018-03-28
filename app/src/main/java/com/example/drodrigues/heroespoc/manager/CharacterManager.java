@@ -96,14 +96,15 @@ public class CharacterManager extends BaseManager {
         task.execute();
     }
 
-    public void getMarvelCharacters(final OperationListener<List<Character>> listener) {
+    public void getMarvelCharacters(final OperationListener<List<Character>> listener,
+                                    final int offset) {
         cancelOperations();
         AsyncTask<Void, Void, OperationResult<List<Character>>> task =
                 new AsyncTask<Void, Void, OperationResult<List<Character>>>() {
 
                     @Override
                     protected OperationResult<List<Character>> doInBackground(Void... voids) {
-                        return characterBusiness.getMarvelCharacters();
+                        return characterBusiness.getMarvelCharacters(offset);
                     }
 
                     @Override

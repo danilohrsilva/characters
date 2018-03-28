@@ -26,8 +26,8 @@ public class MarvelIntegrator extends BackendIntegrator {
         marvelService = BackendIntegrator.createServiceMarvelAuthentication(MarvelService.class);
     }
 
-    public OperationResult<List<Character>> getMarvelCharacters() {
-        final Call<MarvelResult> call = marvelService.getMarvelCharacters(10, 0);
+    public OperationResult<List<Character>> getMarvelCharacters(final int limit, final int offset) {
+        final Call<MarvelResult> call = marvelService.getMarvelCharacters(limit, offset);
 
         final OperationResult<List<Character>> result = new OperationResult<>();
 
@@ -57,7 +57,7 @@ public class MarvelIntegrator extends BackendIntegrator {
                         new Character(marvel.getName(),
                                 null,
                                 marvel.getDescription(),
-                                marvel.getThumbnail().getPath(),
+                                marvel.getThumbnail().getPath() + '.' + marvel.getThumbnail().getExtension(),
                                 CharacterType.MARVEL
                         );
                 result.add(character);

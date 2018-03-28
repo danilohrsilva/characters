@@ -22,6 +22,8 @@ public class CharacterBusiness extends BaseBusiness {
     private final CharacterDao characterDao;
     private final MarvelIntegrator marvelIntegrator;
 
+    private static final int marvelLimit = 10;
+
 
     public CharacterBusiness(final CharacterDao characterDao,
                              final MarvelIntegrator marvelIntegrator) {
@@ -57,8 +59,8 @@ public class CharacterBusiness extends BaseBusiness {
         return result;
     }
 
-    public OperationResult<List<Character>> getMarvelCharacters() {
-        return marvelIntegrator.getMarvelCharacters();
+    public OperationResult<List<Character>> getMarvelCharacters(final int offset) {
+        return marvelIntegrator.getMarvelCharacters(marvelLimit, offset);
     }
 
     private List<OperationError> validateCharacter(final Character character) {

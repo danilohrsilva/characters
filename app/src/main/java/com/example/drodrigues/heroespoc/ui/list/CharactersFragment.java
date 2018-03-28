@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +31,6 @@ public class CharactersFragment extends Fragment {
     private CharacterAdapter characterAdapter;
 
 
-
     public static CharactersFragment newInstance(final List<Character> characters) {
         final CharactersFragment charactersFragment = new CharactersFragment();
         final Bundle args = new Bundle();
@@ -51,6 +52,27 @@ public class CharactersFragment extends Fragment {
     public void onViewCreated(final View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         loadCharacterAdapter();
+
+        recyclerViewItems.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                if (dy > 0) {
+                    final GridLayoutManager grid = (GridLayoutManager) recyclerView.getLayoutManager();
+                    if (grid.findLastCompletelyVisibleItemPosition() == grid.getItemCount() - 1) {
+                        Log.i("Danilo", "Last item");
+                    }
+                }
+
+            }
+        });
+
     }
 
     private void loadCharacterAdapter() {

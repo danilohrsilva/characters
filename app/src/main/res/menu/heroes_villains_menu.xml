@@ -7,12 +7,16 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_heroes"
-            android:icon="@drawable/spider_man_face"
+            android:icon="@drawable/the_flash"
             android:checked="true"
             android:title="Heróis" />
         <item
             android:id="@+id/nav_villains"
-            android:icon="@drawable/venom_face"
+            android:icon="@drawable/darth_vader"
             android:title="Vilões" />
+        <item
+            android:id="@+id/nav_marvel"
+            android:icon="@drawable/spider_man_face"
+            android:title="Marvel" />
     </group>
 </menu>
