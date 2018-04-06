@@ -1,5 +1,7 @@
 package com.example.drodrigues.heroespoc.ui.detail;
 
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -35,6 +37,7 @@ public class CharacterDetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         getHeroExtra();
+        startAnimation();
     }
 
     private void getHeroExtra() {
@@ -49,5 +52,17 @@ public class CharacterDetailActivity extends AppCompatActivity {
         heroName.setText(character.getName());
         heroSecretName.setText(character.getSecretName());
         heroDescription.setText(character.getDescription());
+    }
+
+    private void startAnimation() {
+        final ObjectAnimator scaleDown = ObjectAnimator.ofPropertyValuesHolder(
+                heroImg,
+                PropertyValuesHolder.ofFloat("scaleX", 1.2f),
+                PropertyValuesHolder.ofFloat("scaleY", 1.2f));
+        scaleDown.setDuration(310);
+        scaleDown.setRepeatMode(ObjectAnimator.REVERSE);
+        scaleDown.setRepeatCount(5);
+
+        scaleDown.start();
     }
 }
