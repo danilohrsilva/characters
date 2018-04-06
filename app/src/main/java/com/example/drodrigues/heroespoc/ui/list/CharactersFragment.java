@@ -1,12 +1,13 @@
 package com.example.drodrigues.heroespoc.ui.list;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,8 @@ public class CharactersFragment extends Fragment {
 
     private CharacterAdapter characterAdapter;
 
+    private OnLastItemVisible mCallback;
+
 
     public static CharactersFragment newInstance(final List<Character> characters) {
         final CharactersFragment charactersFragment = new CharactersFragment();
@@ -37,6 +40,11 @@ public class CharactersFragment extends Fragment {
         args.putSerializable("characters", (Serializable) characters);
         charactersFragment.setArguments(args);
         return charactersFragment;
+    }
+
+    // Container Activity must implement this interface
+    public interface OnLastItemVisible {
+        public void onLastItemVisible();
     }
 
     @Override
@@ -66,13 +74,31 @@ public class CharactersFragment extends Fragment {
                 if (dy > 0) {
                     final GridLayoutManager grid = (GridLayoutManager) recyclerView.getLayoutManager();
                     if (grid.findLastCompletelyVisibleItemPosition() == grid.getItemCount() - 1) {
-                        Log.i("Danilo", "Last item");
+                        mCallback.onLastItemVisible();
                     }
                 }
 
             }
         });
 
+    }
+
+    @Override
+    public void onAttach(final Context context) {
+        super.onAttach(context);
+        if (context instanceof Activity) {
+            try {
+                mCallback = (OnLastItemVisible) context;
+            } catch (ClassCastException e) {
+                throw new ClassCastException(context.toString()
+                    + " must implement OnLastItemVisible");
+            }
+        }
+    }
+
+    public void addMoreCharacters(final List<Character> characters) {
+        this.characters.addAll(characters);
+        characterAdapter.notifyDataSetChanged();
     }
 
     private void loadCharacterAdapter() {

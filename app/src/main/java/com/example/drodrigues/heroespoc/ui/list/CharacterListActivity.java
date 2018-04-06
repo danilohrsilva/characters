@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -23,6 +24,7 @@ import com.example.drodrigues.heroespoc.ui.newcharacter.NewCharacterActivity;
 import com.github.clans.fab.FloatingActionButton;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -31,13 +33,17 @@ import butterknife.OnClick;
 
 public class CharacterListActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener,
-        BottomNavigationView.OnNavigationItemReselectedListener {
+        BottomNavigationView.OnNavigationItemReselectedListener,
+        CharactersFragment.OnLastItemVisible {
 
     @BindView(R.id.list_toolbar)
     protected Toolbar toolbar;
 
     @BindView(R.id.progressBar)
     protected ProgressBar progressBar;
+
+    @BindView(R.id.progress_bar_load_more)
+    protected ProgressBar progressBarLoadMore;
 
     @BindView(R.id.bottom_nav_view)
     protected BottomNavigationView bottomNavigationView;
@@ -54,11 +60,9 @@ public class CharacterListActivity extends AppCompatActivity
 
     private Pair<List<Character>, List<Character>> characters;
 
-    private List<Character> marvelCharacters;
+    private List<Character> marvelCharacters = new ArrayList<>();
 
     private CharacterManager mCharacterManager;
-
-    private int offset = 0;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -89,22 +93,7 @@ public class CharacterListActivity extends AppCompatActivity
                     super.onSuccess(result);
                     characters = result;
 
-                    mCharacterManager.getMarvelCharacters(new OperationListener<List<Character>>() {
-                        @Override
-                        public void onSuccess(List<Character> result) {
-                            super.onSuccess(result);
-                            marvelCharacters = result;
-                            progressBar.setVisibility(View.GONE);
-                            viewPage.setAdapter(new CharacterPagerAdapter(getSupportFragmentManager(), characters, marvelCharacters));
-                        }
-
-                        @Override
-                        public void onError(List<OperationError> errors) {
-                            super.onError(errors);
-                            progressBar.setVisibility(View.GONE);
-                            Toast.makeText(CharacterListActivity.this, "Erro", Toast.LENGTH_SHORT).show();
-                        }
-                    }, offset);
+                    getMarvelCharacters();
                 }
             });
 
@@ -204,7 +193,7 @@ public class CharacterListActivity extends AppCompatActivity
                     addCharacter(characterAdded);
                     if (CharacterType.DC_HERO.equals(characterAdded.getType())) {
                         viewPage.setCurrentItem(0, true);
-                    } else {
+                    } else if(CharacterType.DC_VILLAIN.equals(characterAdded.getType())) {
                         viewPage.setCurrentItem(1, true);
                     }
 
@@ -229,5 +218,45 @@ public class CharacterListActivity extends AppCompatActivity
         }
 
         characters = new Pair<>(heroes, villains);
+    }
+
+    @Override
+    public void onLastItemVisible() {
+        if (R.id.nav_marvel == bottomNavigationView.getSelectedItemId()) {
+            getMarvelCharacters();
+        }
+    }
+
+    private void getMarvelCharacters() {
+        final boolean isLoadMore = marvelCharacters.size() > 0;
+        if (isLoadMore) {
+            progressBarLoadMore.setVisibility(View.VISIBLE);
+        }
+        mCharacterManager.getMarvelCharacters(new OperationListener<List<Character>>() {
+            @Override
+            public void onSuccess(List<Character> result) {
+                super.onSuccess(result);
+                progressBar.setVisibility(View.GONE);
+                if (isLoadMore) {
+                    marvelCharacters.addAll(result);
+                    final Fragment page = getSupportFragmentManager()
+                            .findFragmentByTag("android:switcher:" + R.id.characters_list_view_pager + ":" + viewPage.getCurrentItem());
+                    if (page != null && page instanceof CharactersFragment ) {
+                        ((CharactersFragment) page).addMoreCharacters(result);
+                    }
+                    progressBarLoadMore.setVisibility(View.GONE);
+                } else {
+                    marvelCharacters.addAll(result);
+                    viewPage.setAdapter(new CharacterPagerAdapter(getSupportFragmentManager(), characters, marvelCharacters));
+                }
+            }
+
+            @Override
+            public void onError(List<OperationError> errors) {
+                super.onError(errors);
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(CharacterListActivity.this, "Erro", Toast.LENGTH_SHORT).show();
+            }
+        }, marvelCharacters.size());
     }
 }

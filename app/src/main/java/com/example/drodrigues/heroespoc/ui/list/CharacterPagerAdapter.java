@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Pair;
 
 import com.example.drodrigues.heroespoc.entity.Character;
+import com.example.drodrigues.heroespoc.entity.CharacterType;
 
 import java.util.List;
 

@@ -21,7 +21,16 @@
         android:layout_height="wrap_content"
         android:id="@+id/characters_list_view_pager"
         android:layout_below="@+id/list_toolbar"
-        android:layout_above="@id/bottom_nav_view"/>
+        android:layout_above="@id/progress_bar_load_more"/>
+
+    <ProgressBar
+        android:id="@+id/progress_bar_load_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bottom_nav_view"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        android:indeterminateTint="@color/colorPrimary"/>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_nav_view"
