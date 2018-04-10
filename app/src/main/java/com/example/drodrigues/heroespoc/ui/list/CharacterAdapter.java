@@ -1,5 +1,7 @@
 package com.example.drodrigues.heroespoc.ui.list;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,7 +73,14 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.View
 
         public void bind(final Character character, final OnItemClickListener listener) {
             heroName.setText(character.getName());
-            Picasso.with(itemView.getContext()).load(character.getPicture()).into(heroImg);
+            if (!character.getPictureUrl().isEmpty()) {
+                Picasso.with(itemView.getContext()).load(character.getPictureUrl()).into(heroImg);
+            } else {
+                final byte[] picture = character.getPicture();
+                final Bitmap bmp = BitmapFactory.decodeByteArray(picture, 0, picture.length);
+                heroImg.setImageBitmap(bmp);
+            }
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -78,7 +78,7 @@ public class CharacterBusiness extends BaseBusiness {
             errors.add(new OperationError(NEW_CHARACTER_EMPTY_DESCRIPTION, "The character must have a description"));
         }
 
-        if (character.getPicture().isEmpty()) {
+        if (character.getPictureUrl().isEmpty() && character.getPicture() == null) {
             errors.add(new OperationError(NEW_CHARACTER_EMPTY_PICTURE, "The character must have a picture"));
         }
 

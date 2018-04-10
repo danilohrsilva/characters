@@ -54,6 +54,7 @@ public class CharacterTable {
                     "\n" +
                     "An American cultural icon, Batman has garnered enormous popularity and is among the most identifiable comic book characters. Batman has been licensed and featured in various adaptations, from radio to television and film, and appears on merchandise sold around the world, such as apparel, toys, and video games. The character has also intrigued psychiatrists, with many trying to understand his psyche. In 2015, FanSided ranked Batman as number one on their list of \"50 Greatest Super Heroes In Comic Book History\".[9] Kevin Conroy, Bruce Greenwood, Peter Weller, Anthony Ruivivar, Jason O'Mara, and Will Arnett, among others, have provided the character's voice for animated adaptations. Batman has been depicted in both film and television by Lewis Wilson, Robert Lowery, Adam West, Michael Keaton, Val Kilmer, George Clooney, Christian Bale, and Ben Affleck.",
                     "https://images.vexels.com/media/users/17482/122067/raw/c54c2aed3949cf58bdf5a8586d2cddff-vector-batman.png",
+                    null,
                     CharacterType.DC_HERO),
             new Character("Superman",
                     "Clark Kent",
@@ -65,6 +66,7 @@ public class CharacterTable {
                             "\n" +
                             "Superman's appearance is distinctive and iconic; he usually wears a blue costume with a red-and-yellow emblem on the chest, consisting of the letter S in a shield shape, and a red cape. This shield is used in many media to symbolize the character. Superman is widely considered an American cultural icon.[2][4][5][6] He has fascinated scholars, with cultural theorists, commentators, and critics alike exploring the character's role and impact in the United States and worldwide. The character's ownership has often been the subject of dispute, with Siegel and Shuster twice suing for the return of rights. The character has been portrayed in many media adaptations as well, including films, television series, and video games. Several actors have played Superman in motion pictures and TV series including Bud Collyer, Kirk Alyn, George Reeves, Christopher Reeve, Dean Cain, Tim Daly, Tom Welling, Brandon Routh, Henry Cavill, and Tyler Hoechlin.",
                     "https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/SupermanRoss.png/250px-SupermanRoss.png",
+                    null,
                     CharacterType.DC_HERO),
             new Character("The Flash",
                     "Barry Allen",
@@ -78,6 +80,7 @@ public class CharacterTable {
                             "\n" +
                             "A staple of the comic book DC Universe, the Flash has been adapted to numerous DC films, video games, animated series, and live-action television shows. In live action, Barry Allen has been portrayed by Rod Haase for the 1979 television special Legends of the Superheroes, John Wesley Shipp and Grant Gustin in the 1990 The Flash series and the 2014 The Flash series, respectively, as well as by Ezra Miller in the DC Extended Universe series of films, beginning with Batman v Superman: Dawn of Justice (2016). Shipp also portrays a version of Jay Garrick in the 2014 The Flash series. The various incarnations of the Flash also feature in animated series such as Superman: The Animated Series, Justice League, Batman: The Brave and the Bold and Young Justice, as well as the DC Universe Animated Original Movies series.",
                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTieTATG1WRQ76lUeyo3WZRRgr39nxOG_1eh_ah3IVYb4En0nlh",
+                    null,
                     CharacterType.DC_HERO),
             new Character("Green Arrow",
                     "Oliver Queen",
@@ -88,6 +91,7 @@ public class CharacterTable {
                             "                \"\\n\" +\n" +
                             "                \"Green Arrow was not initially a well-known character outside of comic book fandom: he had appeared in a single episode of the animated series Super Friends in 1973. In the 2000s, the character appeared in a number of DC television properties, including the animated series Justice League Unlimited, Young Justice, The Batman and Batman: The Brave and the Bold, and several DC Universe Animated Original Movies. In live action, he appeared in the series Smallville, played by actor Justin Hartley, and became a core cast member. In 2012, the live action series Arrow debuted on The CW, in which the title character is portrayed by Stephen Amell, earning positive reviews[4] and launching several spin-off series, becoming the starting point for a DC Comics shared television universe.",
                     "https://4.bp.blogspot.com/-Gf1-pIylWbw/VdjZ99YHDVI/AAAAAAAAlkM/F-s9CF6a93g/s320/435f6ac3a8f2afc6f8449f402be23c97.jpg",
+                    null,
                     CharacterType.DC_HERO),
             new Character("Wonder Woman",
                     "Diana Prince",
@@ -100,6 +104,7 @@ public class CharacterTable {
                             "                \"\\n\" +\n" +
                             "                \"The character is a well-known figure in popular culture that has been adapted to various media. Notable depictions of the character in other media include Gloria Steinem placing the character on the cover of the second edition of Ms. magazine in 1971; the 1975–1979 Wonder Woman TV series starring Lynda Carter; as well as animated series such as the Super Friends and Justice League. Since Carter's television series, studios struggled to introduce a new live-action Wonder Woman to audiences, although the character continued to feature in a variety of toys and merchandise, as well as animated adaptations of DC properties, including a direct-to-DVD animated feature starring Keri Russell. Attempts to return Wonder Woman to television have included a television pilot for NBC in 2011,[13] closely followed by another stalled production for The CW.[14][15] Gal Gadot portrays Wonder Woman in the DC Extended Universe, starting with the 2016 film Batman v Superman: Dawn of Justice, marking the character's second appearance in a feature film (The Lego Movie (2014) is the first as an animated character) in its 75-year history.[16] Gadot also starred in the character's first solo live-action film, Wonder Woman, which was released on June 2, 2017.[17][18]",
                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdPEQVIKF6GeopPCeGxG4iitDTPxy4LFZCmWXYeAVGsNk5yNzz8g",
+                    null,
                     CharacterType.DC_HERO),
             new Character("Martian Manhunter",
                     "J'onn J'onzz",
@@ -107,6 +112,7 @@ public class CharacterTable {
                             "\n" +
                             "J'onzz has featured in other DC Comics-endorsed products, such as video games, television series, animated films, and merchandise like action figures and trading cards. The character was ranked #43 on IGN's greatest comic book hero list.[1] J'onzz was played by David Ogden Stiers in the 1997 Justice League of America live-action television pilot. Phil Morris also portrayed him in the television series Smallville. David Harewood portrays a human form of Martian Manhunter on Supergirl.",
                     "http://2.bp.blogspot.com/-9mShMBscA7E/VkzXDEZEQTI/AAAAAAAAFPk/v8UfckgbvXw/s640/Martian_Manhunter_h3.jpg",
+                    null,
                     CharacterType.DC_HERO),
             new Character("Green Lantern",
                     "Hal Jordan",
@@ -117,6 +123,7 @@ public class CharacterTable {
                             "                \"\\n\" +\n" +
                             "                \"The Green Lanterns are among DC Comics' longer lasting sets of characters. They have been adapted to television, video games, and motion pictures.",
                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7RQnk04qXjgVsyB86YvJ0hw3Rx1w7DkNWFbjjpMFA7_lOYwzDvw",
+                    null,
                     CharacterType.DC_HERO),
             new Character("Aquaman",
                     "Arthur Curry",
@@ -126,11 +133,13 @@ public class CharacterTable {
                             "\n" +
                             "Aquaman has been featured in several adaptations, first appearing in animated form in the 1967 The Superman/Aquaman Hour of Adventure and then in the related Super Friends program. Since then he has appeared in various animated productions, including prominent roles in the 2000s series Justice League Unlimited and Batman: The Brave and the Bold, as well as several DC Universe Animated Original Movies. Actor Alan Ritchson also portrayed the character in the live-action television show Smallville. Within the DC Extended Universe, American actor Jason Momoa portrayed the character in the films Batman v Superman: Dawn of Justice (2016) and Justice League (2017). Momoa will reprise his role in the upcoming solo film Aquaman, scheduled for release in 2018.[5][6][7]",
                     "https://i.pinimg.com/564x/ea/35/ee/ea35ee975de339eb8f78c89c5b9a901e--arthur-curry-aquaman.jpg",
+                    null,
                     CharacterType.DC_HERO),
             new Character("Hawkwoman",
                     "Shayera Hol",
                     "Hawkwoman is the name of several fictional superheroines all owned by DC Comics and existing in that company's DC Universe. They are partners, and sometimes spouses or lovers, of the various versions of Hawkman, and share many features with the character Hawkgirl.",
                     "http://www.comicbookreligion.com/img/h/a/Hawkwoman_Shayera_Thal.jpg",
+                    null,
                     CharacterType.DC_HERO),
             new Character("Joker",
                     "(Name unknown)",
@@ -142,6 +151,7 @@ public class CharacterTable {
                             "\n" +
                             "One of the most iconic characters in popular culture, the Joker has been listed among the greatest comic book villains and fictional characters ever created. The character's popularity has seen him appear on a variety of merchandise, such as clothing and collectable items, inspire real-world structures (such as theme park attractions), and be referenced in a number of media. The Joker has been adapted to serve as Batman's adversary in live-action, animated, and video game incarnations, including the 1960s Batman television series (played by Cesar Romero) and in film by Jack Nicholson in Batman (1989), Heath Ledger in The Dark Knight (2008), and Jared Leto in Suicide Squad (2016). Mark Hamill, Troy Baker, and others have provided the character's voice.",
                     "http://media.4rgos.it/i/Argos/6512152_R_Z001A?$Web$&$DefaultPDP570$",
+                    null,
                     CharacterType.DC_VILLAIN),
             new Character("Lex Luthor",
                     "Alexander Joseph Luthor",
@@ -153,11 +163,13 @@ public class CharacterTable {
                             "\n" +
                             "The character was ranked 4th on IGN's list of the Top 100 Comic Book Villains of All Time[6] and as the 8th Greatest Villain by Wizard on its 100 Greatest Villains of All Time list.[7] Luthor is one of a few genre-crossing villains whose adventures take place \"in a world in which the ordinary laws of nature are slightly suspended\".[4] Scott James Wells, Sherman Howard, John Shea, and Michael Rosenbaum portrayed the character in Superman-themed television series, while Lyle Talbot, Gene Hackman, Kevin Spacey, and Jesse Eisenberg have portrayed the character in major motion pictures. Clancy Brown, Powers Boothe, James Marsters, Chris Noth, Anthony LaPaglia, Steven Blum, Fred Tatasciore, Jason Isaacs, Kevin Michael Richardson, Mark Rolston, John DiMaggio, James Woods, and others have provided the character's voice in animation adaptations.",
                     "https://pre00.deviantart.net/348b/th/pre/f/2015/048/d/9/how_to_draw_dc_villains___lex_luthor_by_timlevins-d8iflfl.jpg",
+                    null,
                     CharacterType.DC_VILLAIN),
             new Character("Reverse-Flash",
                     "Eobard Thawne",
                     "Reverse-Flash is a name which has been used by several fictional supervillains in American comic books published by DC Comics. Each iteration is an enemy of the hero known as The Flash. As each version of the Flash has the power to travel at super-speeds, each version of Reverse-Flash can also travel at super-speeds, allowing them to travel back and forth in time. The fact that the each two have the same power is much of the reason they are enemies. There have been many different characters that have been known as Reverse-Flash",
                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5DN1HKfbdfkq4tcK1SHt2HQSTEAfIcWHEd42o6Dqgn7KZYhEg",
+                    null,
                     CharacterType.DC_VILLAIN),
             new Character("Deathstroke",
                     "Slade Joseph Wilson",
@@ -165,6 +177,7 @@ public class CharacterTable {
                             "\n" +
                             "Though he is the archenemy of the Teen Titans, writers have developed him over the years as an adversary of other heroes in the DC Universe as well, including Batman and Green Arrow. The character has been substantially adapted from the comics into multiple forms of media, including several Batman-related projects and the Teen Titans animated series. He is portrayed on The CW's live-action TV series Arrow by Manu Bennett, and by Joe Manganiello in the feature films of the DC Extended Universe, beginning with a cameo in 2017's Justice League.",
                     "https://hqrock.files.wordpress.com/2011/05/deathstroke.jpg",
+                    null,
                     CharacterType.DC_VILLAIN),
             new Character("Ares",
                     "",
@@ -172,16 +185,19 @@ public class CharacterTable {
                             "\n" +
                             "The character has appeared in various forms of media. Alfred Molina voiced him in the 2009 direct-to-video animated movie Wonder Woman. Ares later made his live-action debut in the 2017 film Wonder Woman, where he is portrayed by English actor David Thewlis.[1][2",
                     "https://upload.wikimedia.org/wikipedia/en/2/25/AresDC2.png",
+                    null,
                     CharacterType.DC_VILLAIN),
             new Character("Black Manta",
                     "David Hyde",
                     "Black Manta is one of Aquaman's greatest villains. His lethal high-tech suit allows him to survive underwater and adapt to any number of situations with an arsenal of destructive weaponry. Despite his prominence, Manta remains an enigmatic figure, his identity and his origins kept secret. The motivation for his villainy is a deep-seated hatred for the sea due to strong emotional reasons, and a personal vendetta against Aquaman. He has also been a member of O.G.R.E., the Injustice League, the Secret Society of Super-Villains, the Sinestro Corps and the Suicide Squad. Black Manta was created by Bob Haney and Nick Cardy, first appearing in Aquaman #35. (1967)",
                     "http://www.rapsheet.co.uk/Images/Characters/BlackManta.jpg",
+                    null,
                     CharacterType.DC_VILLAIN),
             new Character("Sinestro",
                     "Thaal Sinestro",
                     "Thaal Sinestro is a fictional supervillain appearing in American comic books published by DC Comics. Sinestro is a former Green Lantern Corps member who was dishonorably discharged for abusing his power. He is the archenemy of Hal Jordan and founder of the Sinestro Corps.",
                     "https://pre00.deviantart.net/a2f6/th/pre/f/2015/052/e/c/how_to_draw_dc_villains___sinestro_by_timlevins-d8ixowu.jpg",
+                    null,
                     CharacterType.DC_VILLAIN)));
 
     public static String getCharacterString(final Character character) {

@@ -58,6 +58,7 @@ public class MarvelIntegrator extends BackendIntegrator {
                                 null,
                                 marvel.getDescription(),
                                 marvel.getThumbnail().getPath() + '.' + marvel.getThumbnail().getExtension(),
+                                null,
                                 CharacterType.MARVEL
                         );
                 result.add(character);

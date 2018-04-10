@@ -21,17 +21,36 @@
                 android:id="@+id/hero_img"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
-                android:contentDescription="Heroes picture"
+                android:contentDescription="Heroes pictureUrl"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/ic_launcher_background"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="15dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/camera_icon"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="100dp"
+                android:layout_marginTop="15dp"
+                app:srcCompat="@drawable/ic_photo_camera_black_48px"
+                android:layout_below="@id/hero_img"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/delete_icon"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="100dp"
+                android:layout_marginTop="15dp"
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_delete_black_48px"
+                android:layout_below="@id/hero_img"/>
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/layout_character_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/hero_img"
+                android:layout_below="@id/camera_icon"
                 android:layout_margin="15dp">
 
                 <android.support.design.widget.TextInputEditText

@@ -10,7 +10,7 @@
         android:id="@+id/hero_img"
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        android:contentDescription="Heroes picture"
+        android:contentDescription="Heroes pictureUrl"
         android:scaleType="fitCenter"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintEnd_toEndOf="parent"

@@ -17,7 +17,7 @@
             android:layout_height="180dp"
             android:src="@drawable/ic_launcher_background"
             android:scaleType="fitXY"
-            android:contentDescription="Heroes picture"/>
+            android:contentDescription="Heroes pictureUrl"/>
         <TextView
             android:id="@+id/hero_name"
             android:layout_width="wrap_content"

@@ -2,6 +2,8 @@ package com.example.drodrigues.heroespoc.ui.detail;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -48,7 +50,15 @@ public class CharacterDetailActivity extends AppCompatActivity {
     }
 
     private void getHeroDetail() {
-        Picasso.with(this).load(character.getPicture()).into(heroImg);
+
+        if (!character.getPictureUrl().isEmpty()) {
+            Picasso.with(this).load(character.getPictureUrl()).into(heroImg);
+        } else {
+            final byte[] picture = character.getPicture();
+            final Bitmap bmp = BitmapFactory.decodeByteArray(picture, 0, picture.length);
+            heroImg.setImageBitmap(bmp);
+        }
+
         heroName.setText(character.getName());
         heroSecretName.setText(character.getSecretName());
         heroDescription.setText(character.getDescription());
